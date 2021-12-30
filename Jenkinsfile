@@ -19,11 +19,15 @@ pipeline {
                     bash /data/scripts/cicd.sh'''
             }
         }
-        stage('sendmail') {
-                    steps {
-                      emailext body: '', subject: '构建成功', to: '48211701@qq.com'
-                    }
-                }
     }
+        post {
+              always{
+                    emailext(
+                      body: '${FILE,path="email.html"}',
+                      subject: '构建通知：${PROJECT_NAME}',
+                      to: '48211701@qq.com'
+                    )
+                }
+        }
 }
 

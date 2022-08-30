@@ -17,7 +17,7 @@ pipeline {
                 sh '''export BUILD_ID=dontKillMe
                     source /etc/profile
                     bash /data/scripts/cicd.sh
-                    ls -l'''
+                    ls -lh '''
             }
         }
     }
